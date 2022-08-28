@@ -1,0 +1,46 @@
+%=================TRANSFORMADORES=================
+%TÉCNICO EM ELETROTÉCNICA
+%AUTHOR: SYLVIELLY S SOUSA
+
+%LISTA 01 - QUESTAO 01
+
+printf("================LISTA 01 TRANSFORMADORES================\n\n")
+printf("Q1: Um transformador abaixador apresenta as seguintes caracteristicas\n")
+printf("\nR1 = 53.3232    |   X1 = 39.9924")
+printf("\nR1 = 0.0136     |   X2 = 0.0102")
+printf("\nZc = 1.6133 < 28.3576    |   V2 = 220 < -90")
+printf("\nIm = 0.2536 < 10         |   m = 62.7273")
+printf("\n50 kVA\n")
+
+%conversoes
+j = sqrt(-1);
+kVa = 1000;
+%dados
+R1 = 53.3232;
+R2 = 0.0136;
+X1 = j*39.9924;
+X2 = j*0.0102;
+V2 = 0 - j*220;
+Zc = 1.4197+j*0.7662;
+Im = 0.2497+j*0.0440;
+m = 62.7273;
+Snom = 50*kVa;
+
+printf("\n1.1 - Determine o módulo e a fase da CORRENTE SECUNDÁDIA de carga\n")
+
+I2 = abs(V2)/abs(Zc);
+I2ang = (angle(V2)-angle(Zc));
+I2angle = rad2deg(I2ang);
+
+printf("\nResposta: a corrente no secundario I2 = %f < %f \n",I2,I2angle);
+
+printf("\n1.2 - Determine o módulo e a fase da CORRENTE PRIMARIA - Tensao da fonte de alimentacao\n")
+
+I2ret = I2*cos(I2angle) + j*I2*sin(I2angle);
+I1ret = Im + I2ret;
+
+I1 = abs(I1ret);
+I1ang = angle(I1ret);
+I1angle = rad2deg(I1ang);
+
+printf("\nResposta: a corrente no primario I1 = %f < %f \n",I1,I1angle);
